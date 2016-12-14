@@ -8,16 +8,10 @@
 {
     'use strict';
 
-    var moment;
+    var moment = require('moment');
     if (typeof exports === 'object') {
         // CommonJS module
         module.exports = factory(moment);
-    } else if (typeof define === 'function' && define.amd) {
-        // AMD. Register as an anonymous module.
-        define(function (req)
-        {
-            return factory(moment);
-        });
     } else {
         root.Pikaday = factory(root.moment);
     }
