@@ -241,6 +241,7 @@
         // time
         showTime: true,
         showSeconds: false,
+        showMinutes: true,
         use24hour: false,
         minHour: 0,
         maxHour: 24,
@@ -458,13 +459,16 @@
                     }
                 }
             },
-            opts.incrementHourBy) +
-            '<td>:</td>' +
+            opts.incrementHourBy);
+
+        if (opts.showMinutes) {
+            to_return += '<td>:</td>' +
             renderTimePicker(opts,60, mm, 'pika-select-minute', function(i) { if (i < 10) return "0" + i; return i }, opts.incrementMinuteBy);
+        }
 
         if (opts.showSeconds) {
             to_return += '<td>:</td>' +
-                renderTimePicker(opts,60, ss, 'pika-select-second', function(i) { if (i < 10) return "0" + i; return i }, opts.incrementSecondBy);
+            renderTimePicker(opts,60, ss, 'pika-select-second', function(i) { if (i < 10) return "0" + i; return i }, opts.incrementSecondBy);
         }
         return to_return + '</tr></tbody></table>';
     },
